@@ -41,6 +41,9 @@ public class AddTaskToUserStory implements Command {
 		setDescription(description);
 		task.state = Status.OPEN;
 		setTime();
+		
+		// changes to add happiness index to a task
+		setHappiness();
 		task.initiatedDate = new Date();
 		task.plannedDate = new Date(0);
 		task.dueDate = new Date(0);
@@ -54,6 +57,39 @@ public class AddTaskToUserStory implements Command {
 		reader.println(ColorCodes.GREEN + "Task \"" + task.title + "\" has been added!" + ColorCodes.RESET);
 
 		return false;
+	}
+
+
+	/**
+	 * Method to add happiness index to a task
+	 * @throws IOException 
+	 */
+	private void setHappiness() throws IOException {
+		String line;
+		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
+
+		Completer timeCompleter = new ArgumentCompleter(new StringsCompleter("sad", "mad", "confused", "happy"), new NullCompleter());
+
+		reader.removeCompleter(oldCompleter);
+		reader.addCompleter(timeCompleter);
+
+		reader.setPrompt(ColorCodes.BLUE + "\nhappiness value:\n" + ColorCodes.YELLOW + "(hit Tab to see an example)\n" + ColorCodes.RESET);
+
+		while ((line = reader.readLine()) != null) {
+			line = line.trim();
+
+			try {
+				task.happinessIndex = String.valueOf(line);
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println(ColorCodes.RED + "invalid value: must be a text value!" + ColorCodes.RESET);
+			}
+		}
+
+		reader.removeCompleter(timeCompleter);
+		reader.addCompleter(oldCompleter);
+	
+		
 	}
 
 
