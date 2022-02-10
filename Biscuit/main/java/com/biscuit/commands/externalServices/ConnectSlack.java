@@ -94,15 +94,16 @@ public class ConnectSlack {
 
             boolean isSlackConnectionEstablished = false;
             int totalAttemptsToValidateSlackConnection = 5;
+            String userInputSlackChannelName ="", userInputSlackToken="";
 
             do {
                 reader.setPrompt(ColorCodes.BLUE + "Slack channel name:" + ColorCodes.RESET);
-                project.setSlackChannelName(reader.readLine());
+                userInputSlackChannelName = reader.readLine();
 
                 reader.setPrompt(ColorCodes.BLUE + "Slack token:" + ColorCodes.RESET);
-                project.setSlackToken(reader.readLine());
+                userInputSlackToken = reader.readLine();
 
-                ConnectSlack connectSlack = new ConnectSlack(project.getSlackToken(), project.getSlackChannelName());
+                ConnectSlack connectSlack = new ConnectSlack(userInputSlackToken, userInputSlackChannelName);
                 isSlackConnectionEstablished = connectSlack.validateSlackInformation();
 
                 totalAttemptsToValidateSlackConnection--;
@@ -110,12 +111,10 @@ public class ConnectSlack {
 
             } while (isSlackConnectionEstablished != true & totalAttemptsToValidateSlackConnection > 0);
 
-            if (isSlackConnectionEstablished != true) {
-                project.setSlackToken(null);
-                project.setSlackChannelName(null);
+            if (isSlackConnectionEstablished == true) {
+                project.setSlackToken(userInputSlackToken);
+                project.setSlackChannelName(userInputSlackChannelName);
             }
-
-
         }
     }
 
