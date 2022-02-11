@@ -31,7 +31,7 @@ public class EditProject implements Command {
 
 		setName();
 		setDescription();
-		ConnectSlack.addSlackInformationToProject(p,reader);
+
 
 		try {
 			Dashboard.getInstance().renameProject(oldName, p.name);
@@ -42,6 +42,7 @@ public class EditProject implements Command {
 		}
 
 		p.save();
+		ConnectSlack.addSlackInformationToProject(p,reader);
 		ConnectSlack.sendSlackMessage(p.getSlackChannelName(), p.getSlackToken(),p.toString());
 
 		reader.setPrompt(prompt);
