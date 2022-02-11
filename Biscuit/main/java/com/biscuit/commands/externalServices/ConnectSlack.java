@@ -84,11 +84,21 @@ public class ConnectSlack {
 
     }
 
+    public static void showSlackInformationPromptMessage (Project project, ConsoleReader reader) {
+        if (project.getSlackToken()==null & project.getSlackChannelName()==null) {
+            reader.setPrompt(ColorCodes.BLUE + "Do you want to connect with Slack channel? [Y] Yes \t [N] No:" + ColorCodes.RESET);
+        }
+        else {
+            reader.setPrompt(ColorCodes.BLUE + "Do you want to edit the Slack channel information? [Y] Yes \t [N] No:" + ColorCodes.RESET);
+        }
+    }
+
     //Function to add Slack information
     public static void addSlackInformationToProject (Project project, ConsoleReader reader) throws IOException {
 
         String line;
-        reader.setPrompt(ColorCodes.BLUE + "Do you want to connect with Slack channel? [Y] Yes \t [N] No:" + ColorCodes.RESET);
+        showSlackInformationPromptMessage(project,reader);
+
         line = reader.readLine();
         if (line.equals("Y")) {
 
@@ -97,6 +107,20 @@ public class ConnectSlack {
             String userInputSlackChannelName ="", userInputSlackToken="";
 
             do {
+                if(totalAttemptsToValidateSlackConnection<5)
+                {
+                    reader.setPrompt(ColorCodes.WHITE + "You have "+totalAttemptsToValidateSlackConnection+" attempts left to enter Slack Channel information"+ColorCodes.RESET);
+                    showSlackInformationPromptMessage(project,reader);
+                    line = reader.readLine();
+
+                    if (line.equals("N")) {
+                        totalAttemptsToValidateSlackConnection = 0;
+                    }
+
+
+
+                    }
+
                 reader.setPrompt(ColorCodes.BLUE + "Slack channel name:" + ColorCodes.RESET);
                 userInputSlackChannelName = reader.readLine();
 
