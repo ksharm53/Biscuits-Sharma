@@ -45,7 +45,7 @@ public class RemoveProject implements Command {
 			return true;
 		}
 
-		// only remove project form dashboard
+		// only remove project form dash board
 		dashboard.removeProject(project);
 		dashboard.save();
 

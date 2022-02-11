@@ -96,7 +96,7 @@ public class AddUserStoryToSprint implements Command {
 		String line;
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
 
-		// for (BusinessValue bv : BusinessValue.values()) {
+		// for (BusinessValue by : BusinessValue.values()) {
 		// businessValues.add(bv.name().toLowerCase());
 		// }
 

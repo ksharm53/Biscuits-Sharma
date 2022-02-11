@@ -15,7 +15,7 @@ public class DashboardCompleterFactory {
 	public static List<Completer> getDashboardCompleters() {
 		List<Completer> completers = new ArrayList<Completer>();
 
-		// TODO: dashboard commands
+		// TODO: dash board commands
 		// completers.add(new ArgumentCompleter(
 		// new StringsCompleter("summary", "projects", "alerts", "check_alert",
 		// "search"),
