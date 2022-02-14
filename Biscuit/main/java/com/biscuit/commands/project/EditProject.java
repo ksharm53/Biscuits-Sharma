@@ -65,6 +65,27 @@ public class EditProject implements Command {
 
 		p.description = description.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
 	}
+	
+	private void setGithub() throws IOException{
+		StringBuilder github = new StringBuilder();
+		String line1;
+		String prompt = ColorCodes.BLUE + "github url: " + ColorCodes.YELLOW + "(\\q to end writing " + ColorCodes.RESET;
+		String preload = p.github.replace("\n", "<newline>").replace("!", "<exclamation-mark>");
+		
+		reader.resetPromptLine(prompt, preload, 0);
+		reader.print("\r");
+		
+		while ((line1 = reader.readLine()) != null) {
+			if (line1.equals("\\q")) {
+				break;
+			}
+			github.append(line1).append("\n");
+			reader.setPrompt("");
+		}
+		
+		p.github = github.toString().replace("<newline>", "\n").replace("<exclamation-mark>","!");
+		
+		}
 
 
 	private void setName() throws IOException {

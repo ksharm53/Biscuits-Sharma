@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cf9151e5-bd03-4bd3-88c3-b881c3782f55" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/binaries/setup.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/ColorCodes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/Command.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/BacklogHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/DashboardHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/PlannerHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/ProjectHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/ReleaseHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/ReleasesHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/SprintHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/SprintsHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/TaskHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/UniversalHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/help/UserStoryHelp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/MoveSprintToRelease.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/MoveUserStoryToSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/ShowPlan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/ShowPlanDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/UnplanAll.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/UnplanSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/planner/UnplanUserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/project/AddProject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/project/EditProject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/project/RemoveProject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/project/ShowProject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/release/AddRelease.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/release/ChangeStatusRelease.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/release/EditRelease.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/release/ListReleases.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/release/ShowRelease.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/sprint/AddSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/sprint/ChangeStatusSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/sprint/EditSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/sprint/ListSprints.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/sprint/ShowSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/task/AddTaskToUserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/task/ChangeStatusTask.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/task/EditTask.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/task/ListTasks.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/task/ShowTask.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/AddUserStoryToBacklog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/AddUserStoryToSprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/ChangeStatusUserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/EditUserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/ListUserStories.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/commands/userStory/ShowUserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/BacklogCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/DashboardCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/DateCompleter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/PlannerCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/ProjectCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/ReleaseCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/ReleasesCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/SprintCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/SprintsCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/TaskCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/UniversalCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/factories/UserStoryCompleterFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Backlog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Bug.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Config.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Dashboard.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/ModelHelper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Project.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Release.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Sprint.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Task.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/Test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/UserStory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/enums/BusinessValue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/enums/Points.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/enums/Status.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/DateService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder$Projects.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder$Releases.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder$Sprints.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder$Tasks.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder$UserStories.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/models/services/Finder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/BacklogView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/DashboardView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/PlannerView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/ProjectView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/ReleaseView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/ReleasesView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/SprintView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/SprintsView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/TaskView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/UserStroryView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/main/java/com/biscuit/views/View.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/test/java/com/biscuit/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/Biscuit/test/java/com/hamad/biscuit/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="24zZx34DipKdQMaUllIWWGiIZlM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf9151e5-bd03-4bd3-88c3-b881c3782f55" name="Changes" comment="" />
+      <created>1644635621784</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644635621784</updated>
+    </task>
+    <servers />
+  </component>
+</project>

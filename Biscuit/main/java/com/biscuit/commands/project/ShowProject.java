@@ -23,6 +23,8 @@ public class ShowProject implements Command {
 		System.out.println(ColorCodes.BLUE + "title: " + ColorCodes.RESET + p.name);
 		System.out.println(ColorCodes.BLUE + "description: ");
 		System.out.println(ColorCodes.RESET + p.description);
+		System.out.println(ColorCodes.RESET + "Github url");
+		System.out.println(ColorCodes.RESET + p.github);
 		System.out.println();
 
 		return true;

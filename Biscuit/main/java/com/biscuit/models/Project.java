@@ -11,6 +11,7 @@ public class Project {
 
 	public String name;
 	public String description;
+	public String github;
 	public Backlog backlog = new Backlog();
 	public List<Release> releases = new ArrayList<>();
 	public List<Sprint> sprints = new ArrayList<>();

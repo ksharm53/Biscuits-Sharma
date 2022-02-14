@@ -25,7 +25,8 @@ public class AddProject implements Command {
 	public boolean execute() throws IOException {
 
 		StringBuilder description = new StringBuilder();
-		String line;
+		StringBuilder github = new StringBuilder();
+		String line,line1;
 		String prompt = reader.getPrompt();
 		
 		project.backlog.project = project;
@@ -41,8 +42,19 @@ public class AddProject implements Command {
 			description.append(line).append("\n");
 			reader.setPrompt("");
 		}
+		
+		reader.setPrompt(ColorCodes.BLUE + "\ngithub url: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
+		
+		while ((line1 = reader.readLine()) != null) {
+			if (line1.equals("\\q")) {
+				break;
+			}
+			github.append(line1).append("\n");
+			reader.setPrompt("");
+		}
 
 		project.description = description.toString();
+		project.github= github.toString();
 
 		reader.setPrompt(prompt);
 
