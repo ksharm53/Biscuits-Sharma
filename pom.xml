@@ -34,6 +34,13 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.slack.api/slack-api-client -->
+		<dependency>
+			<groupId>com.slack.api</groupId>
+			<artifactId>slack-api-client</artifactId>
+			<version>1.18.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>Biscuit/main/java</sourceDirectory>

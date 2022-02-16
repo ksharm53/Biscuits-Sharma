@@ -68,11 +68,11 @@ public class ListTasks implements Command {
 
 		at.addRule();
 		if (!this.title.isEmpty()) {
-			at.addRow(null, null, null, null, null, null, this.title).setAlignment(new char[] { 'c', 'c', 'c', 'c', 'c', 'c', 'c' });
+			at.addRow(null,null, null, null, null, null, null, this.title).setAlignment(new char[] { 'c','c','c','c','c','c','c','c' });
 			at.addRule();
 		}
-		at.addRow("Title", "Description", "State", "Initiated Date", "Planned Date", "Due Date", "Estimated Time")
-				.setAlignment(new char[] { 'l', 'l', 'c', 'c', 'c', 'c', 'c' });
+		at.addRow("Title", "Description", "State", "Initiated Date", "Planned Date", "Due Date", "Estimated Time", "Happiness Index")
+		.setAlignment(new char[] {'l','l','c','c','c','c','c','c'});
 
 		if (tasks.size() == 0) {
 			String message;
@@ -88,12 +88,12 @@ public class ListTasks implements Command {
 				at.addRule();
 
 				at.addRow(t.title, t.description, t.state, DateService.getDateAsString(t.initiatedDate), DateService.getDateAsString(t.plannedDate),
-						DateService.getDateAsString(t.dueDate), t.estimatedTime).setAlignment(new char[] { 'l', 'l', 'c', 'c', 'c', 'c', 'c' });
+						DateService.getDateAsString(t.dueDate), t.estimatedTime, t.happinessIndex).setAlignment(new char[] {'l','l','c','c','c','c','c','c'});
 			} // for
 		}
 
 		at.addRule();
-		at.addRow(null, null, null, null, null, null, "Total: " + tasks.size());
+		at.addRow(null,null, null, null, null, null, null, "Total: " + tasks.size());
 		at.addRule();
 
 		V2_AsciiTableRenderer rend = new V2_AsciiTableRenderer();
@@ -103,7 +103,7 @@ public class ListTasks implements Command {
 		RenderedTable rt = rend.render(at);
 		tableString = rt.toString();
 
-		tableString = colorize(tableString);
+		//tableString = colorize(tableString);
 
 		System.out.println();
 		System.out.println(tableString);
@@ -179,7 +179,7 @@ public class ListTasks implements Command {
 		tableString = tableString.replaceFirst("Planned Date", ColorCodes.BLUE + "Planned Date" + ColorCodes.RESET);
 		tableString = tableString.replaceFirst("Due Date", ColorCodes.BLUE + "Due Date" + ColorCodes.RESET);
 		tableString = tableString.replaceFirst("Estimated Time", ColorCodes.BLUE + "Estimated Time" + ColorCodes.RESET);
-
+		tableString = tableString.replaceFirst("Happiness Index", ColorCodes.BLUE + "Happiness Index" + ColorCodes.RESET);
 		return tableString;
 		// return tableString.replaceAll("MUST_HAVE", ColorCodes.YELLOW +
 		// "MUST_HAVE" + ColorCodes.RESET);

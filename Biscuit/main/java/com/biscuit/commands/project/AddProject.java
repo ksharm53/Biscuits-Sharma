@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.models.Project;
 import com.biscuit.models.Dashboard;
 
@@ -44,6 +45,9 @@ public class AddProject implements Command {
 
 		project.description = description.toString();
 
+		ConnectSlack connectionSlack = new ConnectSlack();
+		connectionSlack.addSlackInformationToProject(project,reader);
+
 		reader.setPrompt(prompt);
 
 		dashboard.addProject(project);
@@ -53,8 +57,9 @@ public class AddProject implements Command {
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "Project \"" + project.name + "\" has been added!" + ColorCodes.RESET);
-
+		connectionSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),project.toString());
 		return false;
 	}
+
 
 }
