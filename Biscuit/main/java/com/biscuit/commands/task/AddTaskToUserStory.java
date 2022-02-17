@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.models.Project;
 import com.biscuit.models.Task;
 import com.biscuit.models.UserStory;
@@ -55,6 +56,8 @@ public class AddTaskToUserStory implements Command {
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "Task \"" + task.title + "\" has been added!" + ColorCodes.RESET);
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(), task.title + "\" has been added!");
+
 
 		return false;
 	}
