@@ -34,12 +34,12 @@ public class DateCompleter {
 		}
 
 		for (int i = 0; i < months.size(); i++) {
-			// for Feb 28 days
+			// for February 28 days
 			if (i == 1) {
 				completers.add(new ArgumentCompleter(new StringsCompleter(months.get(i)),
 						new StringsCompleter(days31.subList(0, 28)), new StringsCompleter(years), new NullCompleter()));
 			}
-			// for april, jun, sept, and nov
+			// for April, June, September, and November
 			else if (i == 4 || i == 6 || i == 9 || i == 11) {
 				completers.add(new ArgumentCompleter(new StringsCompleter(months.get(i)),
 						new StringsCompleter(days31.subList(0, 29)), new StringsCompleter(years), new NullCompleter()));

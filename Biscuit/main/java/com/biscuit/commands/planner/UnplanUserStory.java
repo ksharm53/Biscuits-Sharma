@@ -59,7 +59,7 @@ public class UnplanUserStory implements Command {
 		// change state to unplanned
 		us.state = Status.UNPLANNED;
 
-		// make planned date = unset
+		// make planned date = unsent
 		us.plannedDate = new Date(0);
 
 		// update sprint assigned effort

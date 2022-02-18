@@ -42,12 +42,49 @@ public class EditTask implements Command {
 		setPlannedDate();
 		setDueDate();
 		setTime();
+		setHappiness();
 
 		reader.setPrompt(prompt);
 
 		t.save();
 
 		return true;
+	}
+
+
+	/**
+	 * Method to edit happiness index for a task
+	 * @throws IOException
+	 */
+	private void setHappiness() throws IOException {
+
+		String prompt = ColorCodes.BLUE + "\nhappiness value:\n" + ColorCodes.YELLOW + "(hit Tab to see an example)\n" + ColorCodes.RESET;
+
+		String previousHappiness = String.valueOf(t.happinessIndex);
+
+		String line;
+		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
+		Completer happinessCompleter = new ArgumentCompleter(new StringsCompleter("sad", "mad", "confused", "happy"), new NullCompleter());
+
+		reader.removeCompleter(oldCompleter);
+		reader.addCompleter(happinessCompleter);
+
+		reader.resetPromptLine(prompt, previousHappiness, 0);
+		reader.print("\r");
+
+		while ((line = reader.readLine()) != null) {
+			line = line.trim();
+
+			try {
+				t.happinessIndex = String.valueOf(line);
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println(ColorCodes.RED + "invalid value: must be a text value!" + ColorCodes.RESET);
+			}
+		}
+
+		reader.removeCompleter(happinessCompleter);
+		reader.addCompleter(oldCompleter);	
 	}
 
 

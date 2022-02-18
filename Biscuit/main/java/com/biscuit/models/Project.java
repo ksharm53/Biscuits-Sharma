@@ -4,6 +4,8 @@
 
 package com.biscuit.models;
 
+import com.biscuit.commands.externalServices.ConnectSlack;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,8 @@ public class Project {
 	public Backlog backlog = new Backlog();
 	public List<Release> releases = new ArrayList<>();
 	public List<Sprint> sprints = new ArrayList<>();
+	private String slackToken;
+	private String slackChannelName;
 
 
 	public void save() {
@@ -84,9 +88,25 @@ public class Project {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "project name: " + name + "\n\ndescription:-\n" + description;
+		return "project name: " + name + "\n\ndescription:-\n" + description ;
 	}
 
+	public String getSlackToken() {
+		return slackToken;
+	}
+
+	public void setSlackToken(String slackToken) {
+		this.slackToken = slackToken;
+	}
+
+	public String getSlackChannelName() {
+		return slackChannelName;
+	}
+
+	public void setSlackChannelName(String slackChannelName) {
+		this.slackChannelName = slackChannelName;
+	}
 }

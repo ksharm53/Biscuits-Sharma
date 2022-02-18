@@ -13,6 +13,7 @@ import com.biscuit.models.enums.BusinessValue;
 import com.biscuit.models.enums.Points;
 import com.biscuit.models.enums.Status;
 import com.biscuit.models.services.DateService;
+import com.biscuit.utility.Utility;
 
 import jline.console.ConsoleReader;
 import jline.console.completer.AggregateCompleter;
@@ -72,10 +73,14 @@ public class EditUserStory implements Command {
 			line = line.trim();
 
 			try {
+				Utility.validateInput(line);
 				userStory.points = Integer.valueOf(line);
 				break;
 			} catch (NumberFormatException e) {
 				System.out.println(ColorCodes.RED + "invalid value: must be an integer value!" + ColorCodes.RESET);
+			}
+			catch (IllegalArgumentException e) {
+				System.out.println(ColorCodes.RED + "invalid value. Please use tab to check valid values" + ColorCodes.RESET);
 			}
 		}
 
