@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.factories.DateCompleter;
 import com.biscuit.models.Task;
 import com.biscuit.models.enums.Status;
@@ -34,6 +35,7 @@ public class EditTask implements Command {
 
 	public boolean execute() throws IOException {
 		String prompt = reader.getPrompt();
+		String oldTaskTitle = t.title;
 
 		setTitle();
 		setDescription();
@@ -47,7 +49,14 @@ public class EditTask implements Command {
 		reader.setPrompt(prompt);
 
 		t.save();
-
+		String messageSentOnSlack = "";
+		if(oldTaskTitle.equalsIgnoreCase(t.title)) {
+			messageSentOnSlack+="Task: "+t.title + " has been edited.";
+		}
+		else {
+			messageSentOnSlack+="Task: "+oldTaskTitle + " has been edited to " + t.title;
+		}
+		ConnectSlack.sendSlackMessage(t.project.getSlackChannelName(), t.project.getSlackToken(), messageSentOnSlack);
 		return true;
 	}
 
