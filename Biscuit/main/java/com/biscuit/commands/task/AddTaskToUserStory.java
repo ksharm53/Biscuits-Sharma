@@ -56,8 +56,10 @@ public class AddTaskToUserStory implements Command {
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "Task \"" + task.title + "\" has been added!" + ColorCodes.RESET);
-		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(), task.title + "\" has been added!");
-
+		String messageSentOnSlack = "Task created for " + userStory.title;
+		messageSentOnSlack+= "\n" + "Task title: " + task.title;
+ 		messageSentOnSlack+= "\n" + "Description: " + task.description;
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(), messageSentOnSlack);
 
 		return false;
 	}
