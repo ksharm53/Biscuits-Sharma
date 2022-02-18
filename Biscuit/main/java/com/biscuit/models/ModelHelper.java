@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 
 public class ModelHelper {
 
-	// static Gson gson = new Gson();
+
 	static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
