@@ -13,14 +13,16 @@ public enum Status {
 			Arrays.asList("created", "open", "planned", "unplanned", "in_progress", "in_testing", "done", "overdue", "removed"));
 
 
-	private Status(int value) {
-		this.value = value;
-	}
-
 
 	public int getValue() {
 		return value;
 	}
+
+	
+	private Status(int value) {
+		this.value = value;
+	}
+
 
 
 	public static String allStatus() {
