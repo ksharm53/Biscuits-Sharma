@@ -28,7 +28,8 @@ public class AddProject implements Command {
 		StringBuilder description = new StringBuilder();
 		//StringBuilder github = new StringBuilder();
 		StringBuilder team_members = new StringBuilder();
-		String line,line2;
+		String line,line2,line1;
+		boolean yes = false;
 		String prompt = reader.getPrompt();
 		
 		project.backlog.project = project;
@@ -44,16 +45,22 @@ public class AddProject implements Command {
 			description.append(line).append("\n");
 			reader.setPrompt("");
 		}
-		System.out.println(ColorCodes.BLUE +"Do you want to add team members?"+ ColorCodes.RESET);
-		System.out.println(ColorCodes.BLUE + "Press 'y' for yes and 'n' for no."+ColorCodes.RESET);
-		Scanner scan = new Scanner (System.in);
-		char member = scan.next().charAt(0);
-		System.out.println(member);
+		reader.setPrompt(ColorCodes.BLUE + " Do you want to add team members" + "? [Y/n] " + ColorCodes.RESET);
+		line1 = reader.readLine();
+
+		yes = (line1.toLowerCase().equals("y"));
+
+		
+		//System.out.println(ColorCodes.BLUE +"Do you want to add team members?"+ ColorCodes.RESET);
+		//System.out.println(ColorCodes.BLUE + "Press 'y' for yes and 'n' for no."+ColorCodes.RESET);
+		//Scanner scan = new Scanner (System.in);
+		//char member = scan.next().charAt(0);
+		//System.out.println(member);
 		//System.out.println("How many members are in the team? ");
 		//Scanner sc = new Scanner (System.in);
 		//int no_of_members = sc.nextInt();
 		//System.out.println(no_of_members);
-		if (member =='y') {
+		if (yes) {
 			
 			reader.setPrompt(ColorCodes.GREEN + "\nType names: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
 
