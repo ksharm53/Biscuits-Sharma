@@ -68,10 +68,10 @@ public class AddTaskToUserStory implements Command {
 		String line;
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
 
-		Completer timeCompleter = new ArgumentCompleter(new StringsCompleter("sad", "mad", "confused", "happy"), new NullCompleter());
+		Completer happinessCompleter = new ArgumentCompleter(new StringsCompleter("sad", "mad", "confused", "happy"), new NullCompleter());
 
 		reader.removeCompleter(oldCompleter);
-		reader.addCompleter(timeCompleter);
+		reader.addCompleter(happinessCompleter);
 
 		reader.setPrompt(ColorCodes.BLUE + "\nhappiness value:\n" + ColorCodes.YELLOW + "(hit Tab to see an example)\n" + ColorCodes.RESET);
 
@@ -86,9 +86,8 @@ public class AddTaskToUserStory implements Command {
 			}
 		}
 
-		reader.removeCompleter(timeCompleter);
-		reader.addCompleter(oldCompleter);
-	
+		reader.removeCompleter(happinessCompleter);
+		reader.addCompleter(oldCompleter);	
 		
 	}
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.models.Dashboard;
 import com.biscuit.models.Project;
 
@@ -33,6 +34,7 @@ public class EditProject implements Command {
 		setTeam_Members();
 		setGithub();
 
+
 		try {
 			Dashboard.getInstance().renameProject(oldName, p.name);
 			Dashboard.getInstance().save();
@@ -42,6 +44,9 @@ public class EditProject implements Command {
 		}
 
 		p.save();
+		ConnectSlack.addSlackInformationToProject(p,reader);
+		ConnectSlack.sendSlackMessage(p.getSlackChannelName(), p.getSlackToken(),p.toString());
+
 		reader.setPrompt(prompt);
 
 		return true;
@@ -118,4 +123,6 @@ public class EditProject implements Command {
 
 		p.name = reader.readLine();
 	}
+
+
 }
