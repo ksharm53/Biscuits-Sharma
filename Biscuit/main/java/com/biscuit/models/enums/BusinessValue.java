@@ -13,12 +13,14 @@ public enum BusinessValue {
 			Arrays.asList("nice_to_have", "average", "good", "great", "must_have"));
 
 
-	private BusinessValue(int value) {
-		this.value = value;
-	}
 
 
 	public int getValue() {
 		return value;
 	}
+	
+	private BusinessValue(int value) {
+		this.value = value;
+	}
+
 }

@@ -25,6 +25,7 @@ public class UserStoryHelp extends UniversalHelp {
 		at.addRow("go_to task", "Go to a task view (followed by a task name)").setAlignment(new char[] { 'l', 'l' });
 		
 		at.addRow("add task", "Add new task to this user story").setAlignment(new char[] { 'l', 'l' });
+
 		
 	}
 
