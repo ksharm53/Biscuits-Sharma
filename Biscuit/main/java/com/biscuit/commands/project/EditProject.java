@@ -31,6 +31,8 @@ public class EditProject implements Command {
 
 		setName();
 		setDescription();
+		setTeam_Members();
+		setGithub();
 
 
 		try {
@@ -70,6 +72,46 @@ public class EditProject implements Command {
 
 		p.description = description.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
 	}
+	
+	private void setTeam_Members() throws IOException {
+		StringBuilder team_members = new StringBuilder();
+		String line2;
+		String prompt = ColorCodes.GREEN + "Member Names: " + ColorCodes.YELLOW + "(\\q to end writing) " + ColorCodes.RESET;
+		String preload = p.team_members.replace("\n", "<newline>").replace("!", "<exclamation-mark>");
+
+		reader.resetPromptLine(prompt, preload, 0);
+		reader.print("\r");
+
+		while ((line2 = reader.readLine()) != null) {
+			if (line2.equals("\\q")) {
+				break;
+			}
+			team_members.append(line2).append("\n");
+			reader.setPrompt("");
+		}
+
+		p.team_members = team_members.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
+	}
+	private void setGithub() throws IOException{
+		StringBuilder github = new StringBuilder();
+		String line1;
+		String prompt = ColorCodes.BLUE + "github url: " + ColorCodes.YELLOW + "(\\q to end writing " + ColorCodes.RESET;
+		String preload = p.github.replace("\n", "<newline>").replace("!", "<exclamation-mark>");
+		
+		reader.resetPromptLine(prompt, preload, 0);
+		reader.print("\r");
+		
+		while ((line1 = reader.readLine()) != null) {
+			if (line1.equals("\\q")) {
+				break;
+			}
+			github.append(line1).append("\n");
+			reader.setPrompt("");
+		}
+		
+		p.github = github.toString().replace("<newline>", "\n").replace("<exclamation-mark>","!");
+		
+		}
 
 
 	private void setName() throws IOException {
