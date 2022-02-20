@@ -153,7 +153,7 @@ public class ListUserStories implements Command {
 		RenderedTable rt = rend.render(at);
 		tableString = rt.toString();
 
-		tableString = colorize(tableString);
+		//tableString = colorize(tableString);
 
 		System.out.println();
 		System.out.println(tableString);
@@ -172,7 +172,7 @@ public class ListUserStories implements Command {
 		Comparator<UserStory> byPlannedDate = (us1, us2) -> us1.plannedDate.compareTo(us2.plannedDate);
 		Comparator<UserStory> byDueDate = (us1, us2) -> us1.dueDate.compareTo(us2.dueDate);
 		Comparator<UserStory> byTasks = (us1, us2) -> Integer.compare(us1.tasks.size(), us2.tasks.size());
-		Comparator<UserStory> byPoints = (us1, us2) -> Integer.compare(us1.points, us2.points);
+		Comparator<UserStory> byPoints = (us1, us2) -> Integer.compare(us1.points , us2.points);
 		Comparator<UserStory> byFiled = null;
 
 		if (sortBy.equals(UserStory.fields[0])) {

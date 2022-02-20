@@ -45,11 +45,11 @@ public class AddProject implements Command {
 			description.append(line).append("\n");
 			reader.setPrompt("");
 		}
+
 		reader.setPrompt(ColorCodes.BLUE + " Do you want to add team members" + "? [Y/n] " + ColorCodes.RESET);
 		line1 = reader.readLine();
 
 		yes = (line1.toLowerCase().equals("y"));
-
 		
 		if (yes) {
 			
@@ -71,7 +71,6 @@ public class AddProject implements Command {
 		
 		project.github= reader.readLine();
 		
-
 		project.description = description.toString();
 		project.team_members = team_members.toString();
 

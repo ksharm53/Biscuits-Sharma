@@ -10,6 +10,7 @@ import com.biscuit.models.UserStory;
 import com.biscuit.models.enums.BusinessValue;
 import com.biscuit.models.enums.Points;
 import com.biscuit.models.enums.Status;
+import com.biscuit.utility.Utility;
 
 import jline.console.ConsoleReader;
 import jline.console.completer.ArgumentCompleter;
@@ -60,14 +61,8 @@ public class AddUserStoryToSprint implements Command {
 
 
 	private void setPoints() throws IOException {
-		// List<String> points = new ArrayList<String>();
 		String line;
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
-
-		// for (Points p : Points.values()) {
-		// points.add(p.name().substring(1, p.name().length() - 2));
-		// }
-
 		Completer pointsCompleter = new ArgumentCompleter(new StringsCompleter(Points.values), new NullCompleter());
 
 		reader.removeCompleter(oldCompleter);
@@ -79,10 +74,14 @@ public class AddUserStoryToSprint implements Command {
 			line = line.trim();
 
 			try {
-				userStory.points = Integer.valueOf(line);
+				Utility.validateInput(line);
+				userStory.points =Integer.valueOf(line);
 				break;
 			} catch (NumberFormatException e) {
 				System.out.println(ColorCodes.RED + "invalid value: must be an integer value!" + ColorCodes.RESET);
+			}
+			catch (IllegalArgumentException e) {
+				System.out.println(ColorCodes.RED + "invalid value. Please use tab to check valid values" + ColorCodes.RESET);
 			}
 		}
 
@@ -90,15 +89,9 @@ public class AddUserStoryToSprint implements Command {
 		reader.addCompleter(oldCompleter);
 	}
 
-
 	private void setBusinessValue() throws IOException {
-		// List<String> businessValues = new ArrayList<String>();
 		String line;
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
-
-		// for (BusinessValue by : BusinessValue.values()) {
-		// businessValues.add(bv.name().toLowerCase());
-		// }
 
 		Completer businessValuesCompleter = new ArgumentCompleter(new StringsCompleter(BusinessValue.values), new NullCompleter());
 

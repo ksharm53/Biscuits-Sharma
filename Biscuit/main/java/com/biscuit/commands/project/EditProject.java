@@ -92,6 +92,7 @@ public class EditProject implements Command {
 
 		p.team_members = team_members.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
 	}
+  
 	private void setGithub() throws IOException{
 		StringBuilder github = new StringBuilder();
 		String line1;
