@@ -85,7 +85,7 @@ public class ConnectSlack {
         showSlackInformationPromptMessage(project,reader);
 
         line = reader.readLine();
-        if (line.equals("Y")) {
+        if (line.equalsIgnoreCase("Y")) {
             boolean isSlackConnectionEstablished = false;
             int totalAttemptsToValidateSlackConnection = 5;
             String userInputSlackChannelName ="", userInputSlackToken="";
@@ -96,7 +96,7 @@ public class ConnectSlack {
                     showSlackInformationPromptMessage(project,reader);
                     line = reader.readLine();
 
-                    if (line.equals("N")) {
+                    if (line.equalsIgnoreCase("N")) {
                         totalAttemptsToValidateSlackConnection = 0;
                     }
                 }
