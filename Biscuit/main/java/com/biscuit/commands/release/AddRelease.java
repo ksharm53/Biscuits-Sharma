@@ -7,10 +7,12 @@ import java.util.GregorianCalendar;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.factories.DateCompleter;
 import com.biscuit.models.Project;
 import com.biscuit.models.Release;
 import com.biscuit.models.enums.Status;
+import com.biscuit.utility.Constants;
 
 import jline.console.ConsoleReader;
 import jline.console.completer.AggregateCompleter;
@@ -53,6 +55,13 @@ public class AddRelease implements Command {
 
 		project.addRelease(release);
 		project.save();
+
+		// This will avoid multiple invocation of 
+		if(project.getSlackToken().isEmpty() || project.getSlackChannelName().isEmpty()) {
+
+			ConnectSlack.addSlackInformationToProject(project,reader);
+		}
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),release.name + Constants.RELEASE_ADD_MESSAGE);
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "Release \"" + release.name + "\" has been added!" + ColorCodes.RESET);

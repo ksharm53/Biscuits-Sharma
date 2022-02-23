@@ -5,11 +5,13 @@ import java.util.Date;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.models.Project;
 import com.biscuit.models.UserStory;
 import com.biscuit.models.enums.BusinessValue;
 import com.biscuit.models.enums.Points;
 import com.biscuit.models.enums.Status;
+import com.biscuit.utility.Constants;
 import com.biscuit.utility.Utility;
 
 import jline.console.ConsoleReader;
@@ -52,6 +54,13 @@ public class AddUserStoryToBacklog implements Command {
 
 		project.backlog.addUserStory(userStory);
 		project.save();
+
+		// This will avoid multiple invocation of 
+		if(project.getSlackToken().isEmpty() || project.getSlackChannelName().isEmpty()) {
+
+			ConnectSlack.addSlackInformationToProject(project,reader);
+		}
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),userStory.title + Constants.ADD_USERSTORY_MESSAGE);
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "User Story \"" + userStory.title + "\" has been added to the backlog!" + ColorCodes.RESET);

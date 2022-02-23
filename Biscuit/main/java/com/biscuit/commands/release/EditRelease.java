@@ -7,10 +7,12 @@ import java.util.GregorianCalendar;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.factories.DateCompleter;
 import com.biscuit.models.Release;
 import com.biscuit.models.enums.Status;
 import com.biscuit.models.services.DateService;
+import com.biscuit.utility.Constants;
 
 import jline.console.ConsoleReader;
 import jline.console.completer.AggregateCompleter;
@@ -43,6 +45,8 @@ public class EditRelease implements Command {
 		reader.setPrompt(prompt);
 
 		r.save();
+
+		ConnectSlack.sendSlackMessage(r.project.getSlackChannelName(), r.project.getSlackToken(), r.name + Constants.RELEASE_EDIT_MESSAGE);
 
 		return true;
 	}

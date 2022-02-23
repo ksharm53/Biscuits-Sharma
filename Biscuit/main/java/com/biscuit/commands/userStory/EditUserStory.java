@@ -7,12 +7,14 @@ import java.util.GregorianCalendar;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.factories.DateCompleter;
 import com.biscuit.models.UserStory;
 import com.biscuit.models.enums.BusinessValue;
 import com.biscuit.models.enums.Points;
 import com.biscuit.models.enums.Status;
 import com.biscuit.models.services.DateService;
+import com.biscuit.utility.Constants;
 import com.biscuit.utility.Utility;
 
 import jline.console.ConsoleReader;
@@ -48,6 +50,13 @@ public class EditUserStory implements Command {
 		setPoints();
 
 		reader.setPrompt(prompt);
+
+		// This will avoid multiple invocation of 
+		if(userStory.project.getSlackToken().isEmpty() || userStory.project.getSlackChannelName().isEmpty()) {
+
+			ConnectSlack.addSlackInformationToProject(userStory.project,reader);
+		}
+		ConnectSlack.sendSlackMessage(userStory.project.getSlackChannelName(), userStory.project.getSlackToken(),Constants.EDIT_USERSTORY_MESSAGE + userStory.toString());
 
 		userStory.save();
 

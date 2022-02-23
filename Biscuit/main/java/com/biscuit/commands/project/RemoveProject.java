@@ -4,8 +4,9 @@ import java.io.IOException;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
-import com.biscuit.models.Project;
+import com.biscuit.commands.externalServices.ConnectSlack;
 import com.biscuit.models.Dashboard;
+import com.biscuit.models.Project;
 
 import jline.console.ConsoleReader;
 
@@ -61,7 +62,7 @@ public class RemoveProject implements Command {
 			return true;
 		}
 
-		yes = (line.toLowerCase().equals("y"));
+		yes = (line.toLowerCase().equalsIgnoreCase("y"));
 
 		if (yes) {
 			// delete project files
@@ -72,7 +73,19 @@ public class RemoveProject implements Command {
 			return true;
 		}
 
+
+		// This will avoid multiple invocation of
+		if(project.getSlackToken().isEmpty() ||
+				project.getSlackChannelName().isEmpty()) {
+
+			ConnectSlack.addSlackInformationToProject(project,reader); 
+		}
+
+
 		reader.setPrompt(prompt);
+
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),project.toString());
+
 		return true;
 	}
 
