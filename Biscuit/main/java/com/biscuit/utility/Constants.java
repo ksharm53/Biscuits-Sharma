@@ -6,7 +6,6 @@ public final class Constants {
 	public static final String AUTHORIZATION ="Authorization";
 	public static final String BEARER ="Bearer ";
 	public static final String ACCESS_TOKEN ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1Nzc2MzYxLCJqdGkiOiIxNGQ5ZTI1NGQ1OWU0NGM3OWUzMjNlYTRiZTczM2JjNyIsInVzZXJfaWQiOjUwMTU3M30.-ejDkQVkjkkXD9dENC_oTGbR9U4yEMxAtXbQZSU3Qwk";
-
 	public static final String RELEASE_ADD_MESSAGE = " : Release Added by Buiscuit";
 	public static final String RELEASE_EDIT_MESSAGE = " : Release Edited by Buiscuit";
 	public static final String TASK_ADD_MESSAGE = "Task created for: ";

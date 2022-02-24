@@ -44,7 +44,13 @@ public class EditProject implements Command {
 		}
 
 		p.save();
-		ConnectSlack.addSlackInformationToProject(p,reader);
+		
+		// This will avoid multiple invocation of 
+		if(p.getSlackToken().isEmpty() || p.getSlackChannelName().isEmpty()) {
+			
+			ConnectSlack.addSlackInformationToProject(p,reader);
+		}
+		
 		ConnectSlack.sendSlackMessage(p.getSlackChannelName(), p.getSlackToken(),p.toString());
 
 		reader.setPrompt(prompt);

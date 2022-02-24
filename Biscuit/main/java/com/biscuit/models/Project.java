@@ -4,8 +4,6 @@
 
 package com.biscuit.models;
 
-import com.biscuit.commands.externalServices.ConnectSlack;
-
 import java.util.ArrayList;
 import java.util.List;
 

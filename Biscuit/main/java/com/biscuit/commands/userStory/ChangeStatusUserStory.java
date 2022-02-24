@@ -30,8 +30,8 @@ public class ChangeStatusUserStory implements Command {
 		us.state = state;
 
 		us.save();
-	
-		ConnectSlack.sendSlackMessage(us.project.getSlackChannelName(), us.project.getSlackToken(),Constants.EDIT_USERSTORY_STATUS_MESSAGE + us.title + " has been changed by buiscuit.");
+		
+		ConnectSlack.sendSlackMessage(us.project.getSlackChannelName(), us.project.getSlackToken(),Constants.EDIT_USERSTORY_STATUS_MESSAGE + us.title + " has been changed by buiscuit");
 
 		System.out.println(ColorCodes.GREEN + "State of user story " + us.title + " has been changed from " + oldState
 				+ " to " + us.state + ColorCodes.RED);
