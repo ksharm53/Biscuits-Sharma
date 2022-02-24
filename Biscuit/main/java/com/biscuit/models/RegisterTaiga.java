@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class RegisterTaiga{	
 
-	public String accepted_terms;
+	public boolean accepted_terms;
 
 	public String email;
 
@@ -20,7 +20,11 @@ public class RegisterTaiga{
 
 	private String username;
 
-	public RegisterTaiga(String accepted_terms, String email, String full_name, String password, String type,
+	public RegisterTaiga() {
+		super();
+	}
+
+	public RegisterTaiga(boolean accepted_terms, String email, String full_name, String password, String type,
 			String username) {
 		super();
 		this.accepted_terms = accepted_terms;
@@ -31,11 +35,13 @@ public class RegisterTaiga{
 		this.username = username;
 	}
 
-	public String getAcceptedTerms() {
+
+
+	public boolean getAcceptedTerms() {
 		return accepted_terms;
 	}
 
-	public void setAcceptedTerms(String accepted_terms) {
+	public void setAcceptedTerms(boolean accepted_terms) {
 		this.accepted_terms = accepted_terms;
 	}
 
