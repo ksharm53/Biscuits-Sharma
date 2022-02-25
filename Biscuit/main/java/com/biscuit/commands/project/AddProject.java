@@ -60,12 +60,13 @@ public class AddProject implements Command {
 					break;
 				}
 				team_members.append(line2).append("\n");
-				reader.setPrompt("");
+				reader.setPrompt("ColorCodes.GREEN + \"\\nRole of the user: \" "+line2+ "ColorCodes.YELLOW + \"\\n(\\\\q to end writing)\\n\" + ColorCodes.RESET");
 			}
 		}
 		else {
 			System.out.println("Okay");
 		}
+		
 		
 		reader.setPrompt(ColorCodes.GREEN + "\ngithub url: " + ColorCodes.RESET);
 		
