@@ -28,7 +28,7 @@ public class AddProject implements Command {
 
 		StringBuilder description = new StringBuilder();
 		StringBuilder team_members = new StringBuilder();
-		String line,line2,line1;
+		String line,line2,line1,role;
 		boolean yes = false;
 		String prompt = reader.getPrompt();
 		
@@ -60,8 +60,9 @@ public class AddProject implements Command {
 					break;
 				}
 				team_members.append(line2).append("\n");
-				reader.setPrompt("ColorCodes.GREEN + \"\\nRole of the user: \" "+line2+ "ColorCodes.YELLOW + \"\\n(\\\\q to end writing)\\n\" + ColorCodes.RESET");
-			}
+				reader.setPrompt("ColorCodes.GREEN + \"\\nRole of the user: \" "+line2+ +"ColorCodes.RESET");
+				role= reader.readLine();
+				}
 		}
 		else {
 			System.out.println("Okay");
@@ -74,7 +75,7 @@ public class AddProject implements Command {
 		
 		project.description = description.toString();
 		project.team_members = team_members.toString();
-
+		project.role = role.toString();
 		ConnectSlack connectionSlack = new ConnectSlack();
 		connectionSlack.addSlackInformationToProject(project,reader);
 
