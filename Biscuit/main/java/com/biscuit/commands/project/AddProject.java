@@ -38,7 +38,7 @@ public class AddProject implements Command {
 		reader.setPrompt(ColorCodes.BLUE + "\ndescription: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
 
 		while ((line = reader.readLine()) != null) {
-			if (line.equals("\\q")) {
+			if (line.contains("\\q")) {
 				break;
 			}
 			description.append(line).append("\n");
@@ -55,7 +55,7 @@ public class AddProject implements Command {
 			reader.setPrompt(ColorCodes.GREEN + "\nType names: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
 
 			while ((line2 = reader.readLine()) != null) {
-				if (line2.equals("\\q")) {
+				if (line2.contains("\\q")) {
 					break;
 				}
 				team_members.append(line2).append("\n");
