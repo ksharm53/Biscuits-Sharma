@@ -69,7 +69,7 @@ public class EditProject implements Command {
 		reader.print("\r");
 
 		while ((line = reader.readLine()) != null) {
-			if (line.equals("\\q")) {
+			if (line.contains("\\q")) {
 				break;
 			}
 			description.append(line).append("\n");
@@ -89,7 +89,7 @@ public class EditProject implements Command {
 		reader.print("\r");
 
 		while ((line2 = reader.readLine()) != null) {
-			if (line2.equals("\\q")) {
+			if (line2.contains("\\q")) {
 				break;
 			}
 			team_members.append(line2).append("\n");
@@ -109,7 +109,7 @@ public class EditProject implements Command {
 		reader.print("\r");
 		
 		while ((line1 = reader.readLine()) != null) {
-			if (line1.equals("\\q")) {
+			if (line1.contains("\\q")) {
 				break;
 			}
 			github.append(line1).append("\n");
