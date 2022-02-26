@@ -60,10 +60,12 @@ public class AddProject implements Command {
 				}
 				team_members.append(line2).append("\n");
 				reader.setPrompt("");
+				reader.setPrompt("Please add the role for "+line2+ ": ");
+				role= reader.readLine();
+				team_members.append(role);
+				break;
 			}
-			reader.setPrompt(ColorCodes.GREEN + "\nAdd the role for the user: " + line2 + ColorCodes.RESET);
-			
-			
+
 		}
 		else {
 			System.out.println("Okay");
