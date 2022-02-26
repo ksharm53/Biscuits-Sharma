@@ -27,18 +27,18 @@ public class AddProject implements Command {
 
 		StringBuilder description = new StringBuilder();
 		StringBuilder team_members = new StringBuilder();
-		String line,line2,line1,role;
+		String line,line2,line1;
 		boolean yes = false;
 		String prompt = reader.getPrompt();
-		
+
 		project.backlog.project = project;
-		
+
 		reader.setPrompt(ColorCodes.BLUE + "project name: " + ColorCodes.RESET);
 		project.name = reader.readLine();
 		reader.setPrompt(ColorCodes.BLUE + "\ndescription: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
 
 		while ((line = reader.readLine()) != null) {
-			if (line.equals("\\q")) {
+			if (line.contains("\\q")) {
 				break;
 			}
 			description.append(line).append("\n");
@@ -49,13 +49,13 @@ public class AddProject implements Command {
 		line1 = reader.readLine();
 
 		yes = (line1.toLowerCase().equals("y"));
-		
+
 		if (yes) {
-			
+
 			reader.setPrompt(ColorCodes.GREEN + "\nType names: " + ColorCodes.YELLOW + "\n(\\q to end writing)\n" + ColorCodes.RESET);
 
 			while ((line2 = reader.readLine()) != null) {
-				if (line2.equals("\\q")) {
+				if (line2.contains("\\q")) {
 					break;
 				}
 				team_members.append(line2).append("\n");
@@ -70,14 +70,13 @@ public class AddProject implements Command {
 		else {
 			System.out.println("Okay");
 		}
-		
+
 		reader.setPrompt(ColorCodes.GREEN + "\ngithub url: " + ColorCodes.RESET);
-		
+
 		project.github= reader.readLine();
-		
+
 		project.description = description.toString();
 		project.team_members = team_members.toString();
-		project.role= role.toString();
 
 		ConnectSlack.addSlackInformationToProject(project,reader);
 
