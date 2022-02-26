@@ -61,7 +61,7 @@ public class AddProject implements Command {
 				}
 				team_members.append(line2).append("\n");
 				reader.setPrompt("ColorCodes.GREEN + \"\\nRole of the user: \" "+line2+ +"ColorCodes.RESET");
-				role= reader.readLine();
+				role= reader.readLine()
 				}
 		}
 		else {
