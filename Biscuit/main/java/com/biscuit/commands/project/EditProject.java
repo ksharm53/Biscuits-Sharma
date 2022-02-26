@@ -44,13 +44,13 @@ public class EditProject implements Command {
 		}
 
 		p.save();
-		
+
 		// This will avoid multiple invocation of 
 		if(p.getSlackToken().isEmpty() || p.getSlackChannelName().isEmpty()) {
-			
+
 			ConnectSlack.addSlackInformationToProject(p,reader);
 		}
-		
+
 		ConnectSlack.sendSlackMessage(p.getSlackChannelName(), p.getSlackToken(),p.toString());
 
 		reader.setPrompt(prompt);
@@ -69,7 +69,7 @@ public class EditProject implements Command {
 		reader.print("\r");
 
 		while ((line = reader.readLine()) != null) {
-			if (line.equals("\\q")) {
+			if (line.contains("\\q")) {
 				break;
 			}
 			description.append(line).append("\n");
@@ -78,7 +78,7 @@ public class EditProject implements Command {
 
 		p.description = description.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
 	}
-	
+
 	private void setTeam_Members() throws IOException {
 		StringBuilder team_members = new StringBuilder();
 		String line2;
@@ -89,7 +89,7 @@ public class EditProject implements Command {
 		reader.print("\r");
 
 		while ((line2 = reader.readLine()) != null) {
-			if (line2.equals("\\q")) {
+			if (line2.contains("\\q")) {
 				break;
 			}
 			team_members.append(line2).append("\n");
@@ -98,27 +98,27 @@ public class EditProject implements Command {
 
 		p.team_members = team_members.toString().replace("<newline>", "\n").replace("<exclamation-mark>", "!");
 	}
-  
+
 	private void setGithub() throws IOException{
 		StringBuilder github = new StringBuilder();
 		String line1;
 		String prompt = ColorCodes.BLUE + "github url: " + ColorCodes.YELLOW + "(\\q to end writing " + ColorCodes.RESET;
 		String preload = p.github.replace("\n", "<newline>").replace("!", "<exclamation-mark>");
-		
+
 		reader.resetPromptLine(prompt, preload, 0);
 		reader.print("\r");
-		
+
 		while ((line1 = reader.readLine()) != null) {
-			if (line1.equals("\\q")) {
+			if (line1.contains("\\q")) {
 				break;
 			}
 			github.append(line1).append("\n");
 			reader.setPrompt("");
 		}
-		
+
 		p.github = github.toString().replace("<newline>", "\n").replace("<exclamation-mark>","!");
-		
-		}
+
+	}
 
 
 	private void setName() throws IOException {
