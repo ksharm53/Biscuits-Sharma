@@ -58,7 +58,6 @@ public class ConnectSlack {
                 boolean isSlackInformationValid = sendSlackMessage(slackChannelName, slackToken,MSG_CONNECTION_INITIALIZATION);
                 if(isSlackInformationValid)
                 {
-                    //If 'ok' is true, then response is success.
                     return true;
                 }
             }
@@ -98,6 +97,7 @@ public class ConnectSlack {
 
                     if (line.equalsIgnoreCase("N")) {
                         totalAttemptsToValidateSlackConnection = 0;
+                        break;
                     }
                 }
 

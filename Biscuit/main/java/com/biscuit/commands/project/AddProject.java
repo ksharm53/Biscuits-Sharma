@@ -1,13 +1,12 @@
 package com.biscuit.commands.project;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
 import com.biscuit.commands.externalServices.ConnectSlack;
-import com.biscuit.models.Project;
 import com.biscuit.models.Dashboard;
+import com.biscuit.models.Project;
 
 import jline.console.ConsoleReader;
 
@@ -74,10 +73,11 @@ public class AddProject implements Command {
 		project.github= reader.readLine();
 		
 		project.description = description.toString();
-		project.team_members = team_members.toString();
+
 		project.role = role.toString();
-		ConnectSlack connectionSlack = new ConnectSlack();
 		connectionSlack.addSlackInformationToProject(project,reader);
+
+
 
 		reader.setPrompt(prompt);
 
@@ -88,7 +88,7 @@ public class AddProject implements Command {
 
 		reader.println();
 		reader.println(ColorCodes.GREEN + "Project \"" + project.name + "\" has been added!" + ColorCodes.RESET);
-		connectionSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),project.toString());
+		ConnectSlack.sendSlackMessage(project.getSlackChannelName(), project.getSlackToken(),project.toString());
 		return false;
 	}
 
