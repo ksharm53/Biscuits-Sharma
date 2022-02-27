@@ -14,18 +14,20 @@ import com.biscuit.utility.Constants;
 
 import io.fabric8.taiga.ProjectDTO;
 
-public class TaigaProjectImpl implements TaigaProjectIfs{
+public class TaigaProjectImpl implements TaigaProjectIfs{	
 
 	Logger logger = Logger.getLogger(TaigaProjectImpl.class.getName()); 
+	RestTemplate restTemplate = new RestTemplate();
+	
+	public TaigaProjectImpl(RestTemplate restTemplate) {
+		super();
+		this.restTemplate = restTemplate;
+	}
 
 	@Override
 	public ProjectDTO addTaigaProject(ProjectDTO project)
 	{ 
-		ProjectDTO projectResponse= new ProjectDTO();
-
 		try { 
-
-			RestTemplate restTemplate = new RestTemplate(); 
 
 			String taigaAPIUrl =Constants.ADD_TAIGA_API_URL; 
 			URI uri = new URI(taigaAPIUrl);
@@ -40,13 +42,14 @@ public class TaigaProjectImpl implements TaigaProjectIfs{
 			restTemplate.getMessageConverters().add(jsonHttpMessageConverter);
 
 			HttpEntity <ProjectDTO> requestEntity = new HttpEntity<ProjectDTO>(project, headers); 
-			projectResponse =restTemplate.postForObject(uri,requestEntity,ProjectDTO.class);
+
+			return restTemplate.postForObject(uri,requestEntity,ProjectDTO.class);
 
 		} catch (Exception ex) { 
 			logger.info(ex.getMessage()); 
 		}
 
-		return projectResponse;
+		return null;
 	}
 
 }
