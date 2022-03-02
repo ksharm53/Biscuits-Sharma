@@ -1,44 +1,48 @@
-/*
- * package com.biscuit.commands.task;
- * 
- * import static org.junit.Assert.assertEquals;
- * 
- * import java.io.IOException;
- * 
- * import org.junit.Before; import org.junit.Test; import
- * org.junit.runner.RunWith; import org.mockito.InjectMocks; import
- * org.mockito.Mockito; import org.mockito.runners.MockitoJUnitRunner;
- * 
- * import com.biscuit.models.Project; import com.biscuit.models.UserStory;
- * 
- * @RunWith(MockitoJUnitRunner.class) public class AddTaskToUserStoryTest{
- * 
- * @InjectMocks AddTaskToUserStory addTaskToUserStory;
- * 
- * UserStory userStory = null; Project p= null;
- * 
- * 
- * //@Before public void init(){ userStory= new UserStory(); userStory.title=
- * "JUnit1"; userStory.description="Description 1";
- * 
- * p = new Project(); p.backlog.addUserStory(userStory); }
- * 
- * //@Test public void executeTest() throws IOException {
- * //addTaskToUserStory=new AddTaskToUserStory(reader, userStory.project,
- * userStory); AddTaskToUserStory addTaskToUserStorySpy =
- * Mockito.spy(addTaskToUserStory);
- * 
- * 
- * //Mockito.doNothing().when(addTaskToUserStorySpy).setTitlePublicMethod();
- * //Mockito.doNothing().when(addTaskToUserStorySpy).setTitlePublicMethod();
- * //Mockito.doNothing().when(addTaskToUserStorySpy).setTitlePublicMethod();
- * 
- * 
- * //addTaskToUserStory= new AddTaskToUserStory(reader, userStory.project,
- * userStory); boolean saved=addTaskToUserStory.execute(); assertEquals(true,
- * saved);
- * 
- * }
- * 
- * }
- */
+
+package com.biscuit.commands.task;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.biscuit.utility.Constants;
+import com.biscuit.utility.Utility;
+
+public class AddTaskToUserStoryTest{
+
+	@Test(expected = ClassNotFoundException.class)
+	public void testClassAvailability() throws ClassNotFoundException{
+
+		Class.forName("AddTaskToUserStory");
+	}
+
+	@Test
+	public void validateMethods() throws ClassNotFoundException {
+		Class<?> tasksClass = Class.forName(Constants.TASKS_IMPL);
+
+		Method[] tasksMethods = tasksClass.getDeclaredMethods();
+		List<String> actualMethodList = Utility.getMethodNames(tasksMethods);
+
+		assertEquals(6, actualMethodList.size());
+		assertTrue(actualMethodList.containsAll(Arrays.asList("setBusinessValue")));
+
+	}
+	
+	
+	@Test
+	public void validateInterface() throws ClassNotFoundException {
+		Class<?> tasksClass = Class.forName(Constants.TASKS_IMPL);
+
+		Class<?>[] taigaInterfaces = tasksClass.getInterfaces();
+
+		assertEquals(1, taigaInterfaces.length);
+		assertEquals("Command", taigaInterfaces[0].getSimpleName());
+
+	}
+
+}
