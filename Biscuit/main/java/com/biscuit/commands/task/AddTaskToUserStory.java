@@ -45,6 +45,7 @@ public class AddTaskToUserStory implements Command {
 		
 		// changes to add happiness index to a task
 		setHappiness();
+		setBusinessValue();
 		task.initiatedDate = new Date();
 		task.plannedDate = new Date(0);
 		task.dueDate = new Date(0);
@@ -93,6 +94,23 @@ public class AddTaskToUserStory implements Command {
 
 		reader.removeCompleter(happinessCompleter);
 		reader.addCompleter(oldCompleter);	
+		
+	}
+	private void setBusinessValue() throws IOException{
+		String busVal;
+		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
+		Completer taskCompleter = new ArgumentCompleter (new  StringsCompleter("X-Small", "Small","Medium","Large","X-Large","XX-Large"), new NullCompleter());
+		reader.removeCompleter(oldCompleter);
+		reader.addCompleter(taskCompleter);
+		reader.setPrompt(ColorCodes.BLUE+"\nbusiness value for the task:\n"+ColorCodes.YELLOW+"(hit tab to see the values)\n"+ColorCodes.RESET);
+		
+		while((busVal=reader.readLine())!=null) {
+			busVal = busVal.trim().toUpperCase();
+			break;
+		}
+		//reader.removeCompleter(taskCompleter);
+		//reader.addCompleter(oldCompleter);
+		
 		
 	}
 
