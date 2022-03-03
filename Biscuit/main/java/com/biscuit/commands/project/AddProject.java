@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.biscuit.ColorCodes;
 import com.biscuit.commands.Command;
 import com.biscuit.commands.externalServices.ConnectSlack;
+import com.biscuit.commands.externalServices.ConnectTaiga;
 import com.biscuit.models.Dashboard;
 import com.biscuit.models.Project;
 
@@ -79,6 +80,7 @@ public class AddProject implements Command {
 		project.team_members = team_members.toString();
 
 		ConnectSlack.addSlackInformationToProject(project,reader);
+		ConnectTaiga.addProjectToTaiga(project, reader);
 
 		reader.setPrompt(prompt);
 

@@ -1,5 +1,7 @@
 package com.biscuit.utility;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,5 +18,17 @@ public final class Utility {
 			throw new IllegalArgumentException();	
 		}
 
+	}
+	
+	
+	/**
+	 * @param methods
+	 * @return
+	 */
+	public static List<String> getMethodNames(Method[] methods) {
+		List<String> methodNames = new ArrayList<>();
+		for (Method method : methods)
+			methodNames.add(method.getName());
+		return methodNames;
 	}
 }
