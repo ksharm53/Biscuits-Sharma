@@ -28,8 +28,7 @@ public class AddProject implements Command {
 
 		StringBuilder description = new StringBuilder();
 		StringBuilder team_members = new StringBuilder();
-		String line,line2,line1;
-		String role;
+		String line,line2,line1,role;
 		boolean yes = false;
 		String prompt = reader.getPrompt();
 
