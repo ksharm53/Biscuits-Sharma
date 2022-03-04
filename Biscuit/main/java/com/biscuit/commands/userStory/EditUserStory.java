@@ -309,12 +309,49 @@ public class EditUserStory implements Command {
 
 		reader.resetPromptLine(prompt, preload, 0);
 		reader.print("\r");
+		
+		
+		
+		while ((businussValue = reader.readLine()) != null) {
+		    String val=businussValue.toString();
+		    if(val.equals("1"))
+		    {
+		    	businussValue = "nice_to_have".toUpperCase();
+		    }
+		    if(val.equals("2"))
+		    {    
+		    	businussValue = "average".toUpperCase();
+		    }
+		    if(val.equals("3"))
+		    {
+		    	businussValue = "good".toUpperCase();
+		    }
+		    if(val.equals("4"))
+		    {
+		    	businussValue = "great".toUpperCase();
+		    }
+		    if(val.equals("5"))
+		    {
+		    	businussValue = "must_have".toUpperCase();
+		    }
+//					line = line.toUpperCase();
+		    System.out.println("the value is"+businussValue);
 
-		businussValue = reader.readLine().trim();
-		while (!BusinessValue.values.contains(businussValue)) {
-			System.out.println(ColorCodes.RED + "invalid business value, hit tab for auto-complete" + ColorCodes.RESET);
-			businussValue = reader.readLine().trim();
+
+			while (!BusinessValue.values.contains(businussValue)) {
+				System.out.println(ColorCodes.RED + "invalid business value, hit tab for auto-complete" + ColorCodes.RESET);
+
+			}
+			userStory.businessValue = BusinessValue.valueOf(businussValue);
+		    reader.removeCompleter(businessValuesCompleter);
+		    reader.addCompleter(oldCompleter);
+		    break;
 		}
+		
+		
+		
+
+
 
 		userStory.businessValue = BusinessValue.valueOf(businussValue.toUpperCase());
 
