@@ -107,18 +107,40 @@ public class AddUserStoryToSprint implements Command {
 		reader.setPrompt(ColorCodes.BLUE + "\nbusiness value:\n" + ColorCodes.YELLOW + "(hit Tab to see valid values)\n" + ColorCodes.RESET);
 
 		while ((line = reader.readLine()) != null) {
-			line = line.trim().toUpperCase();
+		    String val=line.toString();
+		    if(val.equals("1"))
+		    {
+		        line = "nice_to_have".toUpperCase();
+		    }
+		    if(val.equals("2"))
+		    {    
+		        line = "average".toUpperCase();
+		    }
+		    if(val.equals("3"))
+		    {
+		        line = "good".toUpperCase();
+		    }
+		    if(val.equals("4"))
+		    {
+		        line = "great".toUpperCase();
+		    }
+		    if(val.equals("5"))
+		    {
+		        line = "must_have".toUpperCase();
+		    }
+//					line = line.toUpperCase();
+		    System.out.println("the value is"+line);
 
-			try {
-				userStory.businessValue = BusinessValue.valueOf(line);
-			} catch (IllegalArgumentException e) {
-				System.out.println(ColorCodes.RED + "invalid value" + ColorCodes.RESET);
-				continue;
-			}
+		    try {
+		        userStory.businessValue = BusinessValue.valueOf(line);
+		    } catch (IllegalArgumentException e) {
+		        System.out.println(ColorCodes.RED + "invalid value" + ColorCodes.RESET);
+		        continue;
+		    }
 
-			reader.removeCompleter(businessValuesCompleter);
-			reader.addCompleter(oldCompleter);
-			break;
+		    reader.removeCompleter(businessValuesCompleter);
+		    reader.addCompleter(oldCompleter);
+		    break;
 		}
 
 	}
