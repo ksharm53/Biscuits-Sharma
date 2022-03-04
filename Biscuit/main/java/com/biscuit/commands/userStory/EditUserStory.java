@@ -297,6 +297,12 @@ public class EditUserStory implements Command {
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
 		Completer businessValuesCompleter = new ArgumentCompleter(new StringsCompleter(BusinessValue.values),
 				new NullCompleter());
+		System.out.println("Press these values for the following");
+		System.out.println("nice_to_have-1");
+		System.out.println("average-2");
+		System.out.println("good-3");
+		System.out.println("great-4");
+		System.out.println("must_have-5");
 
 		reader.removeCompleter(oldCompleter);
 		reader.addCompleter(businessValuesCompleter);
