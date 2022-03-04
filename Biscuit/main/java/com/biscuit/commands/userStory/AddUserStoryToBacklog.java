@@ -94,7 +94,7 @@ public class AddUserStoryToBacklog implements Command {
 			}
 		}
 
-		reader.removeCompleter(pointsCompleter);
+		reader.removeCompleter(pointsCompleter);							
 		reader.addCompleter(oldCompleter);
 	}
 
@@ -104,6 +104,13 @@ public class AddUserStoryToBacklog implements Command {
 		Completer oldCompleter = (Completer) reader.getCompleters().toArray()[0];
 
 		Completer businessValuesCompleter = new ArgumentCompleter(new StringsCompleter(BusinessValue.values), new NullCompleter());
+		System.out.println("Press these values for the following");
+		System.out.println("nice_to_have-1");
+		System.out.println("average-2");
+		System.out.println("good-3");
+		System.out.println("great-4");
+		System.out.println("must_have-5");
+		
 
 		reader.removeCompleter(oldCompleter);
 		reader.addCompleter(businessValuesCompleter);
@@ -111,18 +118,40 @@ public class AddUserStoryToBacklog implements Command {
 		reader.setPrompt(ColorCodes.BLUE + "\nbusiness value:\n" + ColorCodes.YELLOW + "(hit Tab to see valid values)\n" + ColorCodes.RESET);
 
 		while ((line = reader.readLine()) != null) {
-			line = line.trim().toUpperCase();
+		    String val=line.toString();
+		    if(val.equals("1"))
+		    {
+		        line = "nice_to_have".toUpperCase();
+		    }
+		    if(val.equals("2"))
+		    {    
+		        line = "average".toUpperCase();
+		    }
+		    if(val.equals("3"))
+		    {
+		        line = "good".toUpperCase();
+		    }
+		    if(val.equals("4"))
+		    {
+		        line = "great".toUpperCase();
+		    }
+		    if(val.equals("5"))
+		    {
+		        line = "must_have".toUpperCase();
+		    }
+//					line = line.toUpperCase();
+		    System.out.println("the value is"+line);
 
-			try {
-				userStory.businessValue = BusinessValue.valueOf(line);
-			} catch (IllegalArgumentException e) {
-				System.out.println(ColorCodes.RED + "invalid value" + ColorCodes.RESET);
-				continue;
-			}
+		    try {
+		        userStory.businessValue = BusinessValue.valueOf(line);
+		    } catch (IllegalArgumentException e) {
+		        System.out.println(ColorCodes.RED + "invalid value" + ColorCodes.RESET);
+		        continue;
+		    }
 
-			reader.removeCompleter(businessValuesCompleter);
-			reader.addCompleter(oldCompleter);
-			break;
+		    reader.removeCompleter(businessValuesCompleter);
+		    reader.addCompleter(oldCompleter);
+		    break;
 		}
 
 	}
