@@ -38,8 +38,12 @@ public class ConnectTaiga {
 
 			line = reader.readLine();
 			if (line.equalsIgnoreCase("Y")) {
+				
+				reader.setPrompt(ColorCodes.BLUE + "Please add authorization token: " + ColorCodes.RESET);
+				
+				String token = reader.readLine();
 
-				projectresponse=taigaProject.addTaigaProject(createDTO(project));
+				projectresponse=taigaProject.addTaigaProject(createDTO(project), token);
 				if(null ==projectresponse)
 				{
 					throw new TaigaProjectNotSavedException("Unable to save project with name : " + project.name);

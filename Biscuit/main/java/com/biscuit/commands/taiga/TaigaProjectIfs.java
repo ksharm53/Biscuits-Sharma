@@ -6,7 +6,7 @@ import io.fabric8.taiga.ProjectDTO;
 
 public interface TaigaProjectIfs {
 
-	ProjectDTO addTaigaProject(ProjectDTO projectResponse);
+	ProjectDTO addTaigaProject(ProjectDTO projectResponse,String token);
 
 	ResponseEntity<ProjectResponse> getbyTaigaProjectSlug(String slug);
 
