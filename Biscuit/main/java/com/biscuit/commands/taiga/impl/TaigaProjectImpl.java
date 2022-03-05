@@ -33,7 +33,7 @@ public class TaigaProjectImpl implements TaigaProjectIfs{
 	}
 
 	@Override
-	public ProjectDTO addTaigaProject(ProjectDTO project)
+	public ProjectDTO addTaigaProject(ProjectDTO project, String token)
 	{ 
 		try { 
 
@@ -41,7 +41,8 @@ public class TaigaProjectImpl implements TaigaProjectIfs{
 			URI uri = new URI(taigaAPIUrl);
 
 			HttpHeaders headers = new HttpHeaders(); 
-			headers.set(Constants.AUTHORIZATION,Constants.BEARER + Constants.ACCESS_TOKEN);
+			//headers.set(Constants.AUTHORIZATION,Constants.BEARER + Constants.ACCESS_TOKEN);
+			headers.set(Constants.AUTHORIZATION,Constants.BEARER + token);
 			headers.setContentType(MediaType.APPLICATION_JSON);
 
 			System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
@@ -72,6 +73,8 @@ public class TaigaProjectImpl implements TaigaProjectIfs{
 			headers.set(Constants.AUTHORIZATION,Constants.BEARER + Constants.ACCESS_TOKEN);
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+			
+			System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
 
 			MappingJackson2HttpMessageConverter jsonHttpMessageConverter = new MappingJackson2HttpMessageConverter();
 			restTemplate.getMessageConverters().add(jsonHttpMessageConverter);

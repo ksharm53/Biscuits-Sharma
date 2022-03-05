@@ -2,10 +2,11 @@ package com.biscuit.commands.taiga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doReturn;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,51 +22,46 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.biscuit.models.ProjectResponse;
-import com.biscuit.utility.Constants;
 
 import io.fabric8.taiga.ProjectDTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddTaigaProjectImplTest {
 
-	@Mock
-	RestTemplate restTemplate;
 
 	@InjectMocks
 	TaigaProjectImpl addTaigaProjectImpl;
+	
+	@Mock
+	RestTemplate restTemplate;
 
 	@Mock
 	ProjectDTO projectResponse;
 
+	@Mock
+	ResponseEntity<ProjectResponse> responseEntity;
+	
+	@Mock
+	ProjectResponse responseBody;
+
 	ProjectDTO projectRequest;
-	String taigaAPIUrl;
-	URI uri;
-	HttpHeaders headers;	
 	HttpEntity <ProjectDTO> requestEntity;
 
 	ResponseEntity<ProjectResponse> getProjectResponse;
+	String authToken;
 
 	@Before
 	public void setUp() throws Exception {		
-
+		
 		projectRequest= new ProjectDTO();
 		projectRequest.setDescription("Test Java Description");
 		projectRequest.setName("Test Java");
-
-		taigaAPIUrl = Constants.ADD_TAIGA_API_URL;
-		uri = new URI(taigaAPIUrl);
-
-		headers = new HttpHeaders(); 
-		headers.set(Constants.AUTHORIZATION,Constants.BEARER + Constants.ACCESS_TOKEN);
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
-		requestEntity = new HttpEntity<ProjectDTO>(projectRequest, headers);
 
 	}
 
@@ -82,7 +78,7 @@ public class AddTaigaProjectImplTest {
 		Method[] taigaMethods = TaigaProjectClass.getDeclaredMethods();
 		List<String> actualMethodList = getMethodNames(taigaMethods);
 
-		assertEquals(1, actualMethodList.size());
+		assertEquals(2, actualMethodList.size());
 		assertTrue(actualMethodList.containsAll(Arrays.asList("addTaigaProject")));
 
 	}
@@ -109,16 +105,32 @@ public class AddTaigaProjectImplTest {
 		assertEquals("com.biscuit.commands.taiga.impl.TaigaProjectImpl", taigaConstructors[0].getName());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testGetByTaigaSlugFailure() throws URISyntaxException 
-	{		
-		TaigaProjectImpl impl= new TaigaProjectImpl();
-		getProjectResponse= impl.getbyTaigaProjectSlug("kanavsharma-beta-project");
+	{				
 
-		ProjectResponse responseBody= getProjectResponse.getBody();
+		responseBody= new ProjectResponse();
+		responseBody.setName("Beta project");
+		responseBody.setSlug("kanavsharma-beta-project");
 
-		assertEquals("kanavsharma-beta-project", responseBody.getSlug());
-		assertEquals("Beta project", responseBody.getName());
+		responseEntity= new ResponseEntity<>(responseBody,HttpStatus.OK);	
+		addTaigaProjectImpl= new TaigaProjectImpl(this.restTemplate);
+		
+		doReturn(responseEntity).when(this.restTemplate).exchange(
+			    any(String.class), 
+			    any(HttpMethod.class), 
+			    any(HttpEntity.class),              
+			    any(Class.class),
+			    any(String.class)
+			);
+		
+		responseEntity= addTaigaProjectImpl.getbyTaigaProjectSlug("kanavsharma-beta-project");	
+
+		ProjectResponse actualReponseBody= responseEntity.getBody();
+
+		assertEquals("kanavsharma-beta-project", actualReponseBody.getSlug());
+		assertEquals("Beta project", actualReponseBody.getName());
 
 	}
 
@@ -136,7 +148,7 @@ public class AddTaigaProjectImplTest {
 
 		addTaigaProjectImpl= new TaigaProjectImpl(this.restTemplate);
 
-		projectResponse=addTaigaProjectImpl.addTaigaProject(projectRequest);
+		projectResponse=addTaigaProjectImpl.addTaigaProject(projectRequest,authToken);
 		Assert.assertEquals("Test Java", projectResponse.getName());
 	}	
 

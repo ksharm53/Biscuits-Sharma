@@ -15,6 +15,7 @@ public class AddTaigaProject implements Command {
 	Logger logger = Logger.getLogger(AddTaigaProject.class.getName()); 
 	ConsoleReader reader = null;
 	ProjectDTO projectRequest = null;
+	String authToken;
 
 	@Override
 	public boolean execute() throws IOException {
@@ -32,7 +33,7 @@ public class AddTaigaProject implements Command {
 
 		reader.setPrompt(prompt);
 		
-		response=taigaProject.addTaigaProject(projectRequest);
+		response=taigaProject.addTaigaProject(projectRequest,authToken);
 		
 		if(null == response) {
 			throw new TaigaProjectNotSavedException("Taiga Project with Name: "+ projectRequest.getName() + " is not saved.");
