@@ -121,11 +121,11 @@ function CreateNewProject() {
           type="radio"
           value="false"
           name="slack-channel"
-          checked={connectSlackChannel === "false  "}
+          checked={connectSlackChannel === "false"}
           onChange={onSlackConnectChange}
         />{" "}
         No
-        {connectSlackChannel && (
+        {connectSlackChannel === "true" && (
           <div>
             <p>Slack channel name (add '#')</p>
             <input
