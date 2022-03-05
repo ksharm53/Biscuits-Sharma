@@ -10,18 +10,29 @@ router.get('/ping', function (req, res) {
 });
 
 router.post('/create', function (req, res) {
-  const { name, description, team_members } = req.body;
-  console.log(req.body);
+  const {
+    name,
+    description,
+    team_members,
+    slack_channel,
+    slack_token,
+    taiga,
+    github,
+  } = req.body;
 
   var data = {
     name: name,
     description: description,
     team_members: team_members,
+    slack_channel,
+    slack_token,
+    taiga,
+    github,
   };
 
   var dataToStore = JSON.stringify(data);
 
-  fs.writeFile('./test.json', dataToStore, function (err) {
+  fs.appendFile('./jsonData.json', dataToStore, function (err) {
     if (err) {
       console.log('There has been an error saving data');
       console.log(err.message);

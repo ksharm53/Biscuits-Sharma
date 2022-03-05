@@ -31,15 +31,30 @@ function CreateNewProject() {
     setTeamMembers(e.target.value);
   }
 
-  function onFormSubmit() {
+  async function onFormSubmit(e) {
     // call api
-
+    e.preventDefault();
     const data = {
       name,
       description,
       github: githubUrl,
       team_members: teamMembersString,
+      slack_channel: slackChannel,
+      slackToken: slackToken,
+      taiga,
     };
+
+    const rawResponse = await fetch("http://localhost:8000/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const content = await rawResponse.json();
+
+    alert(content.message);
   }
 
   return (
