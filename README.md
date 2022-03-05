@@ -163,6 +163,19 @@ java -jar Biscuits-Sharma-0.0.1-SNAPSHOT-jar-with-dependencies.jar
      ```
  - Rectify Misspellings of the commands.
 
+#Frontend
+
+navigate to Biscuits-Sharma\frontend
+
+npm i 
+npm start (To start the frontend)
+
+Backend
+
+navigate to Biscuits-Sharma\backend
+
+run index.js file for backend.
+
 
 
 ## Team
