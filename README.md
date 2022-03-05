@@ -167,14 +167,16 @@ java -jar Biscuits-Sharma-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 navigate to Biscuits-Sharma\frontend
 
-npm i 
+npm i
 npm start (To start the frontend)
 
-Backend
+#Backend
 
 navigate to Biscuits-Sharma\backend
 
 run index.js file for backend.
+
+The json contents will be saved in jsonData txt file
 
 
 
